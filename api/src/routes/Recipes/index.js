@@ -1,10 +1,10 @@
 const { Router } = require('express');
 
-const { getRecipeById, postRecipe, getRecipesByName } = require("../../controllers/Recipes")
+const { getRecipeById, postRecipe, getRecipes } = require("../../Handlers/Recipes")
 
 const router = Router();
 
-router.get("/", getRecipesByName);
+router.get("/", getRecipes);
 
 router.get("/:id", getRecipeById);
 

@@ -1,9 +1,9 @@
-let {diet} = require("../../db");
+let getInfoDietBd = require("../../controllers/Diets/getInfoDietBd");
 
 const getDiets = async (req, res) => {
   try {
-    const response = await diet.findAll()
-    res.status(200).json(response);
+    const diets = await getInfoDietBd()
+    res.status(200).json(diets);
   } catch (error) {
     res.status(500).send({msg: error.message});
   }
