@@ -3,7 +3,7 @@ const{Recipe, Diet} = require('../../db')
 
 const getInfoDb = async () => {
     const res = await Recipe.findAll({
-		attributes: ["id", "name", "summary", "healthScore", "steps", "image", "createDb"],
+		attributes: ["id", "title", "summary", "healthScore", "steps", "image", "createDb"],
 		include: { model: Diet },
 	});
 

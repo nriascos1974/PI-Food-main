@@ -1,20 +1,19 @@
-let { Recipe } = require("../../db");
+const postData = require("../../controllers/Recipes/postDataRecipe");
 
 const postRecipe = async (req, res) => {
   const { title, summary, healthScore, steps, image, diets } = req.body;
   try {
     if (title && summary && healthScore && steps && image && diets) {
-      const recipeObj = { title, summary, healthScore, steps, image };
+      const recipeObj = { title, summary, healthScore, steps, image, diets };
 
-      const recipeGuardado = await Recipe.create(recipeObj);
-      await recipeGuardado.addDiet(diets);
+      const recipe = await postData(recipeObj);
 
-      return res.status(200).json(recipeGuardado);
+      return res.status(200).json(recipe);
     }
 
-    req.status(400).send({ msg: "Faltan datos" });
+    req.status(400).json({ msg: "Faltan datos" });
   } catch (error) {
-    res.status(500).send({ msg: error.message });
+    res.status(500).json({ msg: error.message });
   }
 };
 

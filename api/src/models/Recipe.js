@@ -28,7 +28,7 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
       steps: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
+        type: DataTypes.ARRAY(DataTypes.JSONB),
         allowNull: false,
       },
       createDb: {

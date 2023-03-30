@@ -22,7 +22,8 @@ const loaderDiets = require('./src/controllers/Diets/loaderDiets.js');
 const { conn } = require('./src/db.js');
 
 // Syncing all the models at once.
-conn.sync({ force: true }).then( async () => {
+conn.sync({ force: false }).then( async () => {
+  
   //*Cargo los Tipos de Dietas apenas se inicia el servidor con las provistas en la documentacion
   await loaderDiets();
   server.listen(3001, () => {
