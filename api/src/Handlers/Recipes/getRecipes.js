@@ -18,7 +18,7 @@ const getRecipes = async (req, res) => {
         ? res.status(200).json(filterRecipe)
         : res
             .status(400)
-            .send(`No existe alguna receta que contenga en el Tittle "${name}"`);
+            .json({ msg:`No existe alguna receta que contenga en el Tittle "${name}"`});
     } else {
       res.status(200).json(recipes);
     }

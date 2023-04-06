@@ -6,7 +6,7 @@ const { Diet } = require("../../db");
 const getInfoApi = async () => {
   const dietsAll = [];
   const apiUrl = await axios(
-    `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=10`
+    `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`
   );
 
   const infoApi = apiUrl.data.results.map((e) => {
@@ -15,7 +15,7 @@ const getInfoApi = async () => {
       title: e.title,
       summary: e.summary,
       healthScore: e.healthScore,
-      img: e.image,
+      image: e.image,
       steps: e.analyzedInstructions?.map((step) =>
           step.steps.map((step) => {
             return {
@@ -39,7 +39,6 @@ const getInfoApi = async () => {
   //*Array con los tipos de dietas devueltas por la consulta a la API, como puede haber repetidas
   //* como pueden haber dietas repetidas las paso por un objeto set.
   const TypeDiets = [...new Set(dietsAll)]
-  console.log(TypeDiets)
 
   //*obtengo un array de findorcreate por cada dieta, esto se me convierte en un array de promesas
   let allDiets = TypeDiets.map((e) => Diet.findOrCreate({ where: { name: e } }));
