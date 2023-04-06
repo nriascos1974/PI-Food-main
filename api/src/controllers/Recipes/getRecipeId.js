@@ -7,7 +7,9 @@ const getRecipeId = async (id) => {
   //* REALIZO LA BUSQUEDA EN BASE DE DATOS CONSULTANDO SI EL ID CONTIENE - EN SU COMPOSICION
   console.log("El ID ", id);
   if (id.includes("-")) {
-    const recipeBd = await Recipe.findOne({
+    
+    try {
+      const recipeBd = await Recipe.findOne({
       where: { id: id },
       include: {
         model: Diet,
@@ -18,11 +20,15 @@ const getRecipeId = async (id) => {
       },
     });
     return recipeBd;
+    } catch (error) {
+      
+    }
     //*EN CASO CONTRARIO HAGO LA CONSULTA A LA API
   } else {
     const response = await axios(
       `https://api.spoonacular.com/recipes/${id}/information?apiKey=${API_KEY}`
     );
+    
     const recipeApi = {
       id: response.data.id,
       title: response.data.title,

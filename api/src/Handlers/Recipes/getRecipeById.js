@@ -6,13 +6,7 @@ const getRecipeById = async (req, res) => {
     //*OBTENGO EL ID QUE VIENE POR PARAMS
     const { id } = req.params;
 
-    //*VALIDO QUE EXISTA EL ID, SINO DEVUELVO RESPUESTA AL USUARIO QUE NO SE ENVIO ID
-    if (!id)
-      return res
-        .status(400)
-        .json({ msg: "El Id de la Receta no fue enviado." });
-
-    const response = await getRecipeId(id);
+     const response = await getRecipeId(id);
 
     if (!response)
       return res
