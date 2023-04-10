@@ -4,6 +4,7 @@ import {
   FILTER_ORGIN,
   ORDERBY,
   GET_RECIPES,
+  GET_RECIPES_NAME,
   GET_DIETS,
   RESET_FILTER,
 } from "./type-actions";
@@ -11,7 +12,7 @@ import axios from "axios";
 
 export const addRecipe = (recipe) => {
   return async (dispatch) => {
-    const response = await axios.post("http://localhost:3001/recipes", recipe);
+    const response = await axios.post("/recipes", recipe);
     return dispatch({
       type: ADD_RECIPE,
       payload: response.data,
@@ -21,7 +22,7 @@ export const addRecipe = (recipe) => {
 
 export const getDiets = () => {
   return async (dispatch) => {
-    const response = await axios(`http://localhost:3001/diets`);
+    const response = await axios(`/diets`);
     return dispatch({
       type: GET_DIETS,
       payload: response.data,
@@ -31,7 +32,7 @@ export const getDiets = () => {
 
 export const getRecipes = () => {
   return async (dispatch) => {
-    const response = await axios(`http://localhost:3001/recipes`);
+    const response = await axios(`/recipes`);
     return dispatch({
       type: GET_RECIPES,
       payload: response.data,
@@ -43,10 +44,10 @@ export const getRecipesName = (name) => {
   return async (dispatch) => {
     try {
       const response = await axios(
-        `http://localhost:3001/recipes?name=${name}`
+        `/recipes?name=${name}`
       );
       return dispatch({
-        type: GET_RECIPES,
+        type: GET_RECIPES_NAME,
         payload: response.data,
       });
     } catch (error) {

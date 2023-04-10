@@ -19,20 +19,20 @@ function About() {
             <li>
               <a
                 href="https://www.linkedin.com/in/nestor-j-riascos-m-37b58622a/"
-                target="_blank"
+                target=""
               >
                 <img className={styles.git} src={linkin} alt="linkin" />
               </a>
             </li>
             <li>
-              <a href="https://github.com/nriascos1974" target="_blank">
+              <a href="https://github.com/nriascos1974" target="">
                 <img className={styles.git} src={git} alt="git" />
               </a>
             </li>
             <li>
               <a
                 href="https://www.instagram.com/nestor_riascos/"
-                target="_blank"
+                target=""
               >
                 <img className={styles.git} src={ig} alt="ig" />
               </a>

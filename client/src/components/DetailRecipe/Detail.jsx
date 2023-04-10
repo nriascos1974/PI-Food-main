@@ -10,7 +10,7 @@ export default function Detail() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(async () => {
-    const recipe = await axios(`http://localhost:3001/recipes/${detailId}`);
+    const recipe = await axios(`/recipes/${detailId}`);
     const recipeDet = recipe.data;
     setRecipeDetail(recipeDet);
     setIsLoading(false);
